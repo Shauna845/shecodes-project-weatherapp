@@ -1,0 +1,26 @@
+body {
+  margin: 20px;
+  padding: 40px 50px 40px 50px;
+  font-family: "Poppins", sans-serif;
+}
+h1 {
+  text-align: center;
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  border: 3px solid #eceff6;
+  border-radius: 5px;
+  background: linear-gradient(top, #b1f4cf 0%, #9890e3 100%);
+  border-radius: 10px;
+  padding: 20px;
+  background: radial-gradient(
+    circle at 10% 20%,
+    rgb(21, 186, 196) 0%,
+    rgb(247, 198, 169) 54.2%,
+    rgb(253, 239, 132) 100.3%
+  );
+}
+.search-form {
+  margin-bottom: 20px;
+}
