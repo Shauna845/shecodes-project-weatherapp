@@ -20,7 +20,42 @@ h1 {
     rgb(247, 198, 169) 54.2%,
     rgb(253, 239, 132) 100.3%
   );
+  margin-bottom: 20px;
 }
 .search-form {
   margin-bottom: 20px;
+}
+.temp-container {
+  font-weight: 300;
+  font-size: 48px;
+}
+.temp-container img {
+  margin-right: 10px;
+}
+.temp-container span {
+  font-size: 20px;
+}
+.row {
+  flex-shrink: 0;
+  margin-top: var(--bs-gutter-y);
+  max-width: 100%;
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  width: 100%;
+}
+div {
+  display: block;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+  font-size: 16px;
+  text-decoration: none;
+}
+.footer {
+  margin: 10px;
+  text-align: center;
 }

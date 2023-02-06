@@ -53,14 +53,36 @@
               </button>
               </div>
         </form>
+         <br />
+         <br />
+<div class="row">
 <div class="currentConditions">
-    <h2 id="cityName">Belfast</h2>
-    <h3 id="date"><h3>
-    </ul>
-    <h4 class="temp" id="temp"> °C</h4> 
-    <span class="units"><a href="#" id="celsius-link">°C</a> | <a href="#" id="fahrenheit-link">°F</a>
+  <div class="col-md-6">
+    <h2 class="currentCityName" id="cityName">Belfast</h2>
+    <h3 class="currentDateTime" id="date"><h3>
+    <div class="temp-container d-flex">
+      <img src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" alt="sun-wtih-cloud"/>
+    <div class="temp" id="temp"><strong>8</strong></div>
+    <span class="units"><strong>°C |°F</strong></span>
+    <div class="col-md-6">
+      <ul>
+        <li>
+          Precipitation: 2%
+        </li>
+        <li>
+          Humdity: 80%
+        </li>
+        <li>
+          Wind: 8mph
+        </li>
+      </ul>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
 </div>
-    <br />
+</div>
     <br />
     <div class="row">
       <div class="col-sm">
@@ -99,7 +121,6 @@
     <small>
     <a href="https://github.com/Shauna845/shecodes-project-weatherapp" target="_blank">Open-source code</a> by Shauna Bratten
    </small> </div>
-
   <script src="src/app.js"></script>
   <script
     src="https://kit.fontawesome.com/d61de2a690.js"
