@@ -54,6 +54,10 @@ li {
   list-style: none;
   font-size: 16px;
   text-decoration: none;
+  text-transform: capitalize;
+}
+h4 {
+  text-transform: capitalize;
 }
 .footer {
   margin: 10px;

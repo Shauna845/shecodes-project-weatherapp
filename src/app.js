@@ -30,16 +30,31 @@ let year = now.getFullYear();
 let hour = now.getHours();
 let min = now.getMinutes();
 
-h3.innerHTML = `${day} ${date} ${month}, ${year}, ${hour}:${min}`;
+h3.innerHTML = `${day} ${date} ${month} ${year}, ${hour}:${min}`;
 
-//Week 5//
 let apiKey = "6b137f70277395c99f9b23f929069581";
 
 function displayWeatherCondition(response) {
+  console.log(response.data);
   document.querySelector("#cityName").innerHTML = response.data.name;
   document.querySelector("#temp").innerHTML = Math.round(
     response.data.main.temp
   );
+  document.querySelector("#wind").innerHTML =
+    `Wind: ` + Math.round(response.data.wind.speed) + `mph`;
+  document.querySelector("#humidity").innerHTML =
+    `Humidity: ` + response.data.main.humidity + `%`;
+  document.querySelector("#weatherDescription").innerHTML =
+    response.data.weather[0].description;
+  document
+    .querySelector("#icon")
+    .setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
+  document
+    .querySelector("#icon")
+    .setAttribute("alt", response.data.weather[0].description);
 }
 
 function searchCity(city) {
