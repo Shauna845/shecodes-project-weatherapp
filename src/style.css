@@ -59,6 +59,15 @@ li {
 h4 {
   text-transform: capitalize;
 }
+
+.temp-container .active {
+  color: black;
+  cursor: default;
+  text-decoration: none;
+}
+.temp-container .active:hover {
+  text-decoration: none;
+}
 .footer {
   margin: 10px;
   text-align: center;
