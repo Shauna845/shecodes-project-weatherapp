@@ -32,7 +32,8 @@ let min = now.getMinutes();
 
 h3.innerHTML = `${day} ${date} ${month} ${year}, ${hour}:${min}`;
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#weather-forecast");
 
   let forecastHTML = `<div class="row">`;
@@ -57,7 +58,13 @@ function displayForecast() {
   forecastElement.innerHTML = forecastHTML;
 }
 
-let apiKey = "6b137f70277395c99f9b23f929069581";
+let apiKey = "8161b4309ee03faae957729ba7104797";
+
+function getForecast(coordinates) {
+  let apiKey = "8161b4309ee03faae957729ba7104797";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
 
 function displayWeatherCondition(response) {
   console.log(response.data);
@@ -81,10 +88,12 @@ function displayWeatherCondition(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
 }
 
 function searchCity(city) {
-  let apiKey = "6b137f70277395c99f9b23f929069581";
+  let apiKey = "8161b4309ee03faae957729ba7104797";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeatherCondition);
 }
@@ -96,7 +105,7 @@ function handleSubmit(event) {
 }
 
 function searchLocation(position) {
-  let apiKey = "6b137f70277395c99f9b23f929069581";
+  let apiKey = "8161b4309ee03faae957729ba7104797";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(displayWeatherCondition);
@@ -133,7 +142,6 @@ let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", getCurrentLocation);
 
 searchCity("Belfast");
-displayForecast();
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", showFahrenheitTemp);
