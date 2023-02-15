@@ -32,6 +32,31 @@ let min = now.getMinutes();
 
 h3.innerHTML = `${day} ${date} ${month} ${year}, ${hour}:${min}`;
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#weather-forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-sm">
+        <div class="forecast-date">
+          <strong>${day}</strong>
+        </div>
+        <img id="icon" src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" alt="sun-with-cloud"/>
+        <div class="weather-forecast-temp">
+          <span class="weather-forecast-temp-max">14°</span>
+          <span class="weather-forecast-temp-min">10°</span>
+        </div>
+      </div>
+  `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 let apiKey = "6b137f70277395c99f9b23f929069581";
 
 function displayWeatherCondition(response) {
@@ -108,6 +133,7 @@ let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", getCurrentLocation);
 
 searchCity("Belfast");
+displayForecast();
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", showFahrenheitTemp);
