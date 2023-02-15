@@ -32,26 +32,37 @@ let min = now.getMinutes();
 
 h3.innerHTML = `${day} ${date} ${month} ${year}, ${hour}:${min}`;
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+  return days[day];
+}
+
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#weather-forecast");
 
   let forecastHTML = `<div class="row">`;
-  let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col-sm">
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-md">
         <div class="forecast-date">
-          <strong>${day}</strong>
+          <strong>${formatDay(forecastDay.dt)}</strong></div>
+        <img id="icon" src="http://openweathermap.org/img/wn/${
+          forecastDay.weather[0].icon
+        }@2x.png" alt="" width="42/>
+          <span class="weather-forecast-temp-max">${Math.round(
+            forecastDay.temp.max
+          )}°</span>
+          <span class="weather-forecast-temp-min">${Math.round(
+            forecastDay.temp.min
+          )}°</span>
         </div>
-        <img id="icon" src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" alt="sun-with-cloud"/>
-        <div class="weather-forecast-temp">
-          <span class="weather-forecast-temp-max">14°</span>
-          <span class="weather-forecast-temp-min">10°</span>
-        </div>
-      </div>
   `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
